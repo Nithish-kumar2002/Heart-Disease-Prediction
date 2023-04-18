@@ -27,6 +27,25 @@
   <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
   <!-- responsive style -->
   <link href="{{ url_for('static', filename='css/responsive.css') }}" rel="stylesheet" />
+  
+  <script>
+    $(function() {
+  $('a[href*="#"]').on('click', function(event) {
+    if (this.hash !== "") {
+      event.preventDefault();
+      var hash = this.hash;
+      var targetOffset = $(hash).offset().top;
+      var headerHeight = $('.navbar').outerHeight();
+      var targetPosition = targetOffset - headerHeight;
+      $('html, body').animate({
+        scrollTop: targetPosition
+      }, 1000, function(){
+        window.location.hash = hash;
+      });
+    }
+  });
+});
+  </script>
 </head>
 
 <body>
@@ -55,22 +74,21 @@
                   <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="about.html"> About</a>
+                  <a class="nav-link" href="#about">About</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="service.html"> Results </a>
+                  <a class="nav-link" href="#patient"> Patient info </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#contactLink">Contact Us</a>
                 </li>
               </ul>
             </div>
-            <div class="quote_btn-container ">
-              <form class="form-inline">
-                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-              </form>
-            </div>
-          </div>
+            <div class="quote_btn-container">
+              <a class="btn my-2 my-sm-0 nav_search-btn" href="#work">
+                <i class="fas fa-info-circle"></i>
+              </a>
+            </div>            
         </nav>
       </div>
     </header>
@@ -110,7 +128,7 @@
     <!-- end slider section -->
 
     <!-- user details section -->
-    <section class="contact_section layout_padding" id="contactLink">
+    <section class="contact_section layout_padding" id="patient">
       <div class="container">
         <div class="heading_container">
           <h1 style="color: grey;"> <u>Patient Details</u> </h1>
@@ -165,7 +183,7 @@
 
  <!-- work section -->
 
-  <section class="work_section layout_padding">
+  <section class="work_section layout_padding" id="work">
     <div class="container">
       <div class="heading_container">
         <h2>
@@ -226,7 +244,7 @@
 
     <!-- about section -->
 
-    <section class="about_section ">
+    <section id="about">
       <div class="container">
         <div class="row">
           <div class="col-md-6">
@@ -246,9 +264,7 @@
                 With our user-friendly interface, you can easily enter your health data and receive a personalized risk assessment in just a few clicks. Our system will analyze your data and provide you with an easy-to-understand report on your risk level, as well as recommendations for steps you can take to reduce your risk and improve your overall heart health.
               
               </p>
-              <a href="about.html">
-                Read More
-              </a>
+              
             </div>
           </div>
         </div>

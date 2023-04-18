@@ -27,11 +27,8 @@
   
 </head>
 <body>
-
-  
-  <h2><a href = '/'> <p style="text-align:center;">Hey there, here's your result</p></a></h2>
    
-  <h2>Results:</h2>
+  <h2>Result:</h2>
  
   {% if prediction == 1%}
 	<h2 style="color:red;">Sorry to say, chances of having Heart disease is more, please consult a Doctor.</h2>
@@ -42,8 +39,16 @@
   
 	{% endif %}
 
- 
+  <div style="text-align: center;">
+    <button type="submit" style="background-color: yellow; font-size: 24px; border-radius: 30px;">
+      <a href="/" style="text-decoration: none;">Back to home page</a>
+    </button>
+  </div>
   
+  
+  
+  
+  </div>
   </body>
   </html>
   
