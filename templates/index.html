@@ -55,6 +55,23 @@
   });
 });
   </script>
+
+<script>
+  window.onload = function() {
+    document.getElementById("myForm").reset(); // reset the form on page load
+  };
+
+  if (window.history.replaceState) {
+    window.history.replaceState(null, null, window.location.href);
+  }
+</script>
+
+<script type="text/javascript">
+  function preback(){window.history.forward()}
+  setTimeout("preback()",0);
+  window.onumload=function(){null};
+  </script>
+
 </head>
 
 <body>
@@ -181,15 +198,7 @@
               </div>
             
             </form>
-            <script>
-              // Get the form element
-              var form = document.getElementById("myForm");
-        
-              // Reset the form when the page is loaded
-              window.onload = function() {
-                form.reset();
-              };
-            </script>
+            
           </div>
         </div>
       </div>
