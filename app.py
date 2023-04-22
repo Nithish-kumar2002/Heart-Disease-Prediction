@@ -11,6 +11,11 @@ model = pickle.load(open('model.pkl', 'rb'))
 def home():
     return render_template('index.html')
 
+@app.after_request
+def add_header(response):
+    response.headers['Cache-Control'] = 'no-store'
+    return response
+
 @app.route('/predict',methods=['POST'])
 def predict():
     lst = []

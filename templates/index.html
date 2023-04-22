@@ -27,6 +27,15 @@
   <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
   <!-- responsive style -->
   <link href="{{ url_for('static', filename='css/responsive.css') }}" rel="stylesheet" />
+
+  <script>
+		// Refresh the page when the user clicks on the back or forward buttons in the browser
+		window.onpageshow = function(event) {
+			if (event.persisted) {
+				window.location.reload();
+			}
+		};
+	</script>
   
   <script>
     $(function() {
@@ -137,7 +146,7 @@
           <div class="col-lg-6 col-md-8 mx-auto">
             
             
-            <form action="/predict" method="post" style="max-width: 800px; margin: 0 auto;">
+            <form id="myForm" action="/predict" method="post" style="max-width: 800px; margin: 0 auto;">
               
               <div class="form-group">
                 <input type="text" name="chest pain type (4 values)" placeholder="chest pain type (values 0,1,2,3)" required="required" style="font-size: 20px; width: 100%;" />
@@ -172,7 +181,15 @@
               </div>
             
             </form>
-            
+            <script>
+              // Get the form element
+              var form = document.getElementById("myForm");
+        
+              // Reset the form when the page is loaded
+              window.onload = function() {
+                form.reset();
+              };
+            </script>
           </div>
         </div>
       </div>

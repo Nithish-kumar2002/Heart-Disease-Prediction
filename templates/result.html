@@ -24,7 +24,14 @@
     <img src="static/images/doctor.png" alt="introimg">
   </div>
   
-  
+  <script>
+		// Refresh the page when the user clicks on the back or forward buttons in the browser
+		window.onpageshow = function(event) {
+			if (event.persisted) {
+				window.location.reload();
+			}
+		};
+	</script> 
 </head>
 <body>
    
@@ -44,11 +51,13 @@
       <a href="/" style="text-decoration: none;">Back to home page</a>
     </button>
   </div>
-  
-  
-  
-  
-  </div>
+  <script>
+    function backToHome() {
+      window.history.pushState({}, '', '/');
+      document.getElementById('myForm').reset();
+      window.location.href = '/';
+    }
+  </script>
   </body>
   </html>
   
