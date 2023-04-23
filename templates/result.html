@@ -1,66 +1,156 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>RESULT</title>
+	<style>
+		body {
+			background-color: #f5f5f5;
+			font-family: Arial, sans-serif;
+			font-size: 16px;
+			color: #333333;
+			line-height: 1.5;
+			margin: 0;
+			padding: 0;
+		}
+		
+		header {
+			background-color: #232323;
+			color: #ffffff;
+			padding: 20px;
+			text-align: center;
+		}
+		
+		header h1 {
+			margin: 0;
+			font-size: 36px;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+		
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+		
+		.center {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 50vh;
+		}
+		
+		.center img {
+			margin: auto;
+			display: block;
+			max-width: 100%;
+			max-height: 100%;
+		}
+		
+		h2 {
+			font-size: 28px;
+			font-weight: bold;
+			margin-top: 40px;
+			margin-bottom: 20px;
+			text-align: center;
+			text-transform: uppercase;
+		}
+		
+		p {
+			margin-bottom: 20px;
+			text-align: center;
+		}
+		
+		.btn {
+			display: inline-block;
+			padding: 10px 20px;
+			background-color: #0077cc;
+			color: #ffffff;
+			font-size: 20px;
+			font-weight: bold;
+			text-transform: uppercase;
+			text-decoration: none;
+			border-radius: 30px;
+			transition: background-color 0.3s;
+		}
+		
+		.btn:hover {
+			background-color: #005ea3;
+			cursor: pointer;
+		}
+		
+		.result {
+			background-color: #ffffff;
+			padding: 40px;
+			margin-top: 40px;
+			border-radius: 10px;
+			box-shadow: 0px 0px 20px #cccccc;
+		}
+		
+		.result h2 {
+			margin-top: 0;
+		}
+		
+		.result p {
+			margin-bottom: 0;
+		}
+		
+		.result img {
+			max-width: 100%;
+			margin-top: 20px;
+		}
+	</style>
 
+<style>
+  .back-button {
+    background-color: gold;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    border-radius: 30px;
+    padding: 10px 20px;
+    text-decoration: none;
+  }
 
-  <title>RESULT</title>
-  <style>
-    .center {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 50vh;
-    }
-    
-    .center img {
-      margin: auto;
-      display: block;
-      max-width: 100%;
-      max-height: 100%;
-    }
-  </style>
-  
-  <div class="center">
-    <img src="static/images/doctor.png" alt="introimg">
-  </div>
-  
-  <script>
-		// Refresh the page when the user clicks on the back or forward buttons in the browser
-		window.onpageshow = function(event) {
-			if (event.persisted) {
-				window.location.reload();
-			}
-		};
-	</script> 
+  .back-button:hover {
+    background-color: black;
+    cursor: pointer;
+  }
+</style>
+
 </head>
 <body>
-   
-  <h2>Result:</h2>
- 
-  {% if prediction == 1%}
-	<h2 style="color:red;">Sorry to say, chances of having Heart disease is more, please consult a Doctor.</h2>
-	<p style="text-align:center;"><img src="https://www.heart.org/-/media/images/news/2019/july-2019/0725lifeexpectancy_sc.jpg" alt="HTML" width="450" height="350"></p>
-  {% elif prediction == 0%}
-	<h2 style="color:blue;">No Worries!!! You don't have Heart disease.</h2>
-  <p style="text-align:center;"></p><img src="https://www.becomingminimalist.com/wp-content/uploads/2019/09/how-to-be-happy.jpg" alt="HTML" width="350" height="250"></p>
-  
-	{% endif %}
+	<header>
+		<h1>Heart Disease Prediction</h1>
+	</header>
+	
+	<div class="container">
+		<div class="center">
+			<img src="static/images/doctor.png" alt="doctor">
+		</div>
+		
+		<div class="result">
+			<h2>Result:</h2>
+			
+			{% if prediction == 1%}
+				<h2 style="color:red;">Sorry to say, chances of having Heart disease is more, please consult a Doctor.</h2>
+				<p><img src="https://www.heart.org/-/media/images/news/2019/july-2019/0725lifeexpectancy_sc.jpg" alt="heart disease" width="450" height="350"></p>
+			{% elif prediction == 0%}
+				<h2 style="color:blue;">No Worries!!! You don't have Heart disease.</h2>
+        <p><img src="https://www.becomingminimalist.com/wp-content/uploads/2019/09/how-to-be-happy.jpg" alt="happy person" width="350" height="250"></p>
+        {% endif %}
 
-  <div style="text-align: center;">
-    <button type="submit" style="background-color: yellow; font-size: 24px; border-radius: 30px;">
-      <a href="/" style="text-decoration: none;">Back to home page</a>
-    </button>
-  </div>
-  <script>
-    function backToHome() {
-      window.history.pushState({}, '', '/');
-      document.getElementById('myForm').reset();
-      window.location.href = '/';
-    }
-  </script>
-  
-  </body>
-  </html>
-  
-
-    
+        <div style="text-align: center;">
+          <a href="/" class="back-button">Back to home page</a>
+        </div>
+        
+      
+      <script>
+        function backToHome() {
+          window.history.pushState({}, '', '/');
+          document.getElementById('myForm').reset();
+          window.location.href = '/';
+        }
+      </script>
+    </body>
+</html>    
