@@ -89,7 +89,7 @@ def predict():
         lst += [0 ,0 ,1 ,0]
     elif thal >= 3:
         lst += [0 ,0 ,0 ]
-    final_features = np.array([lst[0],lst[1],lst[2],lst[3],lst[7],lst[8],lst[9],lst[11],lst[12],lst[13],lst[15],lst[17],lst[19]])
+    final_features = np.array([lst[0],lst[1],lst[2],lst[3],lst[4],lst[5],lst[6],lst[7],lst[8],lst[9],lst[10],lst[11],lst[12]])
     pred = rf2.predict(final_features.reshape(1, -1))
     return render_template('result.html', prediction = pred)
 
